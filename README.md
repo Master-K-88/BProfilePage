@@ -16,6 +16,19 @@ ProfilePage with Customize NavBar
 
 ## Design
 
+#### The UI was implemented using programmatic and AUTO Layout. The following are the steps I took in other to get this project done.
+
+- I broke the task down into several layers
+- I setup the Coordinator for Navigation
+- I added the dependencies using SPM and Cocoapods
+- I setup a Networking Manager and a Network service for CRUD Operation
+- I created Interfaces/Protocols for get creating the Data Model used for retrieving Data from Firestore
+- I used the interfaces to created the Data Model
+- I had a rough test of the data from the firebase firestore on a separate app (Testing App My way of confirming the data response)
+- I added the Utility file / Extension files needed for smooth developing process
+- I created Reuseable Components
+- I implemented the collection datasource using RxSwift and later improved on it to have the desired result
+
 ![Simulator Screen Shot - iPhone 14 Pro - 2022-11-11 at 17 11 54](https://user-images.githubusercontent.com/67703771/201383105-38d20594-7e03-4e77-a6d1-eb7d04266cfb.png)
 
 
