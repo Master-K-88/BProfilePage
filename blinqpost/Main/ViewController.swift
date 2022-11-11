@@ -84,6 +84,12 @@ class ViewController: UIViewController {
         collectionView.dataSource = self
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.transform = .init(translationX: 0,
+                                                              y: max(0, 230))
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         setupNavbar()
@@ -113,6 +119,9 @@ class ViewController: UIViewController {
     
     @objc fileprivate func editTapped() {
         print("Edit tapped")
+        navigationController?.navigationBar.transform = .init(translationX: 0,
+                                                              y: 0)
+        coordinator?.gotoEditController()
     }
     
     @objc private func postButtonTapped(_ sender: UIButton) {
@@ -171,9 +180,7 @@ extension ViewController: UICollectionViewDelegate {
         let magicalArea: CGFloat = 140
         
         let vOffset = -(scrollView.contentOffset.y) + magicalArea
-        let alpha: CGFloat = 1 - (scrollView.contentOffset.y / magicalArea)
-        print("Scrolling: \(vOffset)")
-//        profileInfoHeadView.alpha = alpha
+        let alpha: CGFloat = 1 - ((scrollView.contentOffset.y * 2 / magicalArea) )
         if vOffset < 95 {
             navigationController?.navigationBar.transform = .init(translationX: 0,
                                                                   y: 0)
