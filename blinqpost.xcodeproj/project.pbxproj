@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		143EF2289915C94E07D1AEDA /* Pods_blinqpost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 976B6D7C45EC4DF52CDC5FD8 /* Pods_blinqpost.framework */; };
 		9322C402291DFFA700C90214 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 9322C401291DFFA700C90214 /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		9322C404291DFFA700C90214 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 9322C403291DFFA700C90214 /* FirebaseFirestore */; };
 		9322C406291DFFA700C90214 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9322C405291DFFA700C90214 /* FirebaseFirestoreSwift */; };
@@ -20,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2660FA718ADA2F07CCA27071 /* Pods-blinqpost.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blinqpost.release.xcconfig"; path = "Target Support Files/Pods-blinqpost/Pods-blinqpost.release.xcconfig"; sourceTree = "<group>"; };
+		8A6CE9811D831DC0FFC1E3C0 /* Pods-blinqpost.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blinqpost.debug.xcconfig"; path = "Target Support Files/Pods-blinqpost/Pods-blinqpost.debug.xcconfig"; sourceTree = "<group>"; };
 		9342EFEC2916AFC900E1C586 /* blinqpost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = blinqpost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9342EFEF2916AFC900E1C586 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9342EFF12916AFC900E1C586 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -29,6 +32,7 @@
 		9342EFFB2916AFCB00E1C586 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9342EFFD2916AFCB00E1C586 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9342F0032916B01600E1C586 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		976B6D7C45EC4DF52CDC5FD8 /* Pods_blinqpost.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_blinqpost.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,17 +43,38 @@
 				9322C402291DFFA700C90214 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				9322C404291DFFA700C90214 /* FirebaseFirestore in Frameworks */,
 				9322C406291DFFA700C90214 /* FirebaseFirestoreSwift in Frameworks */,
+				143EF2289915C94E07D1AEDA /* Pods_blinqpost.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		35A6F4CE7D70F2E05CBA8DC9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				976B6D7C45EC4DF52CDC5FD8 /* Pods_blinqpost.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		63E56D4F50EB430B89B4DA3C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8A6CE9811D831DC0FFC1E3C0 /* Pods-blinqpost.debug.xcconfig */,
+				2660FA718ADA2F07CCA27071 /* Pods-blinqpost.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		9342EFE32916AFC900E1C586 = {
 			isa = PBXGroup;
 			children = (
 				9342EFEE2916AFC900E1C586 /* blinqpost */,
 				9342EFED2916AFC900E1C586 /* Products */,
+				63E56D4F50EB430B89B4DA3C /* Pods */,
+				35A6F4CE7D70F2E05CBA8DC9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -83,9 +108,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9342F0002916AFCB00E1C586 /* Build configuration list for PBXNativeTarget "blinqpost" */;
 			buildPhases = (
+				BAB82857EA38B110DD996BE0 /* [CP] Check Pods Manifest.lock */,
 				9342EFE82916AFC900E1C586 /* Sources */,
 				9342EFE92916AFC900E1C586 /* Frameworks */,
 				9342EFEA2916AFC900E1C586 /* Resources */,
+				F259EA43883AFFC35F2F8034 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -126,7 +153,7 @@
 			);
 			mainGroup = 9342EFE32916AFC900E1C586;
 			packageReferences = (
-				9322C400291DFFA700C90214 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				9322C400291DFFA700C90214 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */,
 			);
 			productRefGroup = 9342EFED2916AFC900E1C586 /* Products */;
 			projectDirPath = "";
@@ -150,6 +177,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		BAB82857EA38B110DD996BE0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-blinqpost-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F259EA43883AFFC35F2F8034 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-blinqpost/Pods-blinqpost-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-blinqpost/Pods-blinqpost-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-blinqpost/Pods-blinqpost-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9342EFE82916AFC900E1C586 /* Sources */ = {
@@ -300,6 +369,7 @@
 		};
 		9342F0012916AFCB00E1C586 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8A6CE9811D831DC0FFC1E3C0 /* Pods-blinqpost.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -328,6 +398,7 @@
 		};
 		9342F0022916AFCB00E1C586 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2660FA718ADA2F07CCA27071 /* Pods-blinqpost.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -378,7 +449,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		9322C400291DFFA700C90214 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+		9322C400291DFFA700C90214 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
@@ -391,17 +462,17 @@
 /* Begin XCSwiftPackageProductDependency section */
 		9322C401291DFFA700C90214 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 9322C400291DFFA700C90214 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 9322C400291DFFA700C90214 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */;
 			productName = FirebaseAnalyticsWithoutAdIdSupport;
 		};
 		9322C403291DFFA700C90214 /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 9322C400291DFFA700C90214 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 9322C400291DFFA700C90214 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */;
 			productName = FirebaseFirestore;
 		};
 		9322C405291DFFA700C90214 /* FirebaseFirestoreSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 9322C400291DFFA700C90214 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 9322C400291DFFA700C90214 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */;
 			productName = FirebaseFirestoreSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
