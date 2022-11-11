@@ -12,6 +12,8 @@ import AVFoundation
 class CollectionCell: UICollectionViewCell {
     
     var playerLayer = AVPlayerLayer()
+    var mediaLink: String = ""
+    var player: AVPlayer?
     
     static let identifier = "CollectionCell"
     lazy var profileImageView = UIImageView.imageView()
@@ -22,7 +24,7 @@ class CollectionCell: UICollectionViewCell {
     private lazy var mediaView = UIView.bgView()
     private lazy var postImageView = UIImageView.imageView()
     private lazy var muteButton = UIButton.buttonWithImage(with: UIImage())
-   
+    
     required override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -58,37 +60,30 @@ class CollectionCell: UICollectionViewCell {
     private func setupProfileImage() {
         profileImageView.setViewConstraints(top: topAnchor, right: nil, bottom: nil, left: leadingAnchor, paddingTop: 5, paddingLeft: 20, width: contentView.bounds.width * 0.1, height: contentView.bounds.width * 0.1)
         profileImageView.cornerRadius = contentView.bounds.width * 0.1 * 0.5
-//        profileImageView.backgroundColor = .green
         profileImageView.clipsToBounds = true
     }
     
     fileprivate func setupMenuButton() {
         menuButton.setViewConstraints(top: profileImageView.topAnchor, right: contentView.trailingAnchor, bottom: nil, left: nil, paddingRight: 20, width: contentView.bounds.width * 0.05, height: contentView.bounds.width * 0.1)
         menuButton.tintColor = .black
-//        menuButton.backgroundColor = .darkGray
     }
     
     fileprivate func setupUsername() {
         userNameLabel.setViewConstraints(top: profileImageView.topAnchor, right: menuButton.trailingAnchor, bottom: nil, left: profileImageView.trailingAnchor, paddingLeft: 20, paddingRight: 10)
-//        userNameLabel.text = "Brooklyn Simmons"
     }
     
     fileprivate func setupLastUpdate() {
         lastUpdateLabel.setViewConstraints(top: userNameLabel.bottomAnchor, right: userNameLabel.trailingAnchor, bottom: nil, left: userNameLabel.leadingAnchor, paddingTop: 5)
-//        lastUpdateLabel.text = "30mins ago. 17 Oct 22."
         lastUpdateLabel.font = .systemFont(ofSize: 12, weight: .regular)
-//        lastUpdateLabel.textColor = .systemGray
     }
     
     fileprivate func setupDescription() {
         descriptionLabel.setViewConstraints(top: profileImageView.bottomAnchor, right: menuButton.trailingAnchor, bottom: nil, left: profileImageView.leadingAnchor, paddingTop: 20, height: 40)
-//        descriptionLabel.text = "Amet minim molit non deserunt ullamco est sit aliqua dolor do amet sint."
         descriptionLabel.numberOfLines = 2
     }
     
     fileprivate func setupMediaView() {
         mediaView.setViewConstraints(top: descriptionLabel.bottomAnchor, right: descriptionLabel.trailingAnchor, bottom: nil, left: profileImageView.leadingAnchor, paddingTop: 20, width: contentView.bounds.width - 40, height: contentView.bounds.width * 0.5)
-//        mediaView.backgroundColor = .systemBrown
         playerLayer.frame = mediaView.bounds
         mediaView.cornerRadius = 15
     }
@@ -97,12 +92,12 @@ class CollectionCell: UICollectionViewCell {
         muteButton.setViewConstraints(top: nil, right: mediaView.trailingAnchor, bottom: mediaView.bottomAnchor, left: nil,paddingBottom: 20, paddingRight: 20, width: contentView.bounds.width * 0.07, height: contentView.bounds.width * 0.07)
         muteButton.cornerRadius = contentView.bounds.width * 0.07 * 0.5
         muteButton.clipsToBounds = true
-//        muteButton.backgroundColor = .systemPurple
+        muteButton.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
+        muteButton.addTarget(self, action: #selector(playVideoTapped(_:)), for: .touchUpInside)
     }
     fileprivate func setupPostImageview() {
         mediaView.addSubview(postImageView)
         postImageView.pin(to: mediaView)
-//        postImageView.backgroundColor = .purple
         postImageView.cornerRadius = 15
         postImageView.clipsToBounds = true
         
@@ -115,9 +110,7 @@ class CollectionCell: UICollectionViewCell {
     
     
     func configureCell(with model: MediaDataProtocol) {
-//            self.profileImageView.kf.setImage(with: URL(string: model.thumbnail), placeholder: UIImage(named: "Startup"))
         let date = NSDate(timeIntervalSince1970: model.timestamp)
-        print("The model is \(model)")
         DispatchQueue.main.async { [weak self] in
             self?.userNameLabel.text = model.username
             self?.descriptionLabel.text = model.description
@@ -130,11 +123,30 @@ class CollectionCell: UICollectionViewCell {
                 self?.postImageView.kf.setImage(with: URL(string: model.link), placeholder: UIImage(named: "Startup"))
                 self?.muteButton.isEnabled = false
             }
-
+            
         }
-        playVideo(url: model.link)
+        CacheManager.shared.getFileWith(stringUrl: model.link) { result in
+
+                        switch result {
+                        case .success(let url):
+                            self.player = AVPlayer(url: url)
+                            self.playerLayer = AVPlayerLayer(player: self.player)
+                            
+                            self.playerLayer.videoGravity = .resizeAspect
+                            self.mediaView.layer.addSublayer(self.playerLayer)
+                            self.player?.play()
+                            break
+                        case .failure:
+                            break
+                        }
+                    }
+        
     }
     
+    @objc func playVideoTapped(_ sender: UIButton) {
+        print("Play tapped")
+        playVideo(url: mediaLink)
+    }
     func playVideo(url: String) {
         let videoURL = URL(string: url) ?? URL(fileURLWithPath: "")
         let player = AVPlayer(url: videoURL)
@@ -144,6 +156,7 @@ class CollectionCell: UICollectionViewCell {
         mediaView.layer.addSublayer(playerLayer)
         player.play()
     }
+    
 }
 
 

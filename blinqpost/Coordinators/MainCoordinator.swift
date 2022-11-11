@@ -24,19 +24,12 @@ class MainCoordinator: NSObject, Coordinator, UINavigationControllerDelegate {
         navigationController.pushViewController(vc, animated: false)
     }
     
-//    func gotoLearning() {
-//        let child = LearningCoordinator(navigationController: navigationController)
-//        child.parentCoordinator = self
-//        childCoordinator.append(child)
-//        child.start()
-//    }
-    
-//    func gotoMastering() {
-//        let child = MasteringCoordinator(navigationController: navigationController)
-//        child.parentCoordinator = self
-//        childCoordinator.append(child)
-//        child.start()
-//    }
+    func gotoEditController() {
+        let child = EdittingCoordinator(navigationController: navigationController)
+        child.parentCoordinator = self
+        childCoordinator.append(child)
+        child.start()
+    }
     
     func childDidReturn(_ child: Coordinator?) {
         for (index, coordinator) in childCoordinator.enumerated() {
@@ -58,12 +51,9 @@ class MainCoordinator: NSObject, Coordinator, UINavigationControllerDelegate {
             return
         }
         
-//        if let learningVC = fromVC as? LearningViewController {
-//            childDidReturn(learningVC.coordinator)
-//        }
-//        if let masteringVC = fromVC as? MasteringViewController {
-//            childDidReturn(masteringVC.coordinator)
-//        }
+        if let edittingVC = fromVC as? EdittingViewController {
+            childDidReturn(edittingVC.coordinator)
+        }
         
     }
 }
