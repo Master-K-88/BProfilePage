@@ -18,6 +18,11 @@
 		9342EFF92916AFCB00E1C586 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9342EFF82916AFCB00E1C586 /* Assets.xcassets */; };
 		9342EFFC2916AFCB00E1C586 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9342EFFA2916AFCB00E1C586 /* LaunchScreen.storyboard */; };
 		9342F0042916B01600E1C586 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9342F0032916B01600E1C586 /* GoogleService-Info.plist */; };
+		93838D6D291E2DCE0095595D /* BlinqPayFirestoreCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93838D6C291E2DCE0095595D /* BlinqPayFirestoreCollection.swift */; };
+		93838D6F291E2E000095595D /* BlinqpayRequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93838D6E291E2E000095595D /* BlinqpayRequestType.swift */; };
+		93838D71291E2E4E0095595D /* BlinqOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93838D70291E2E4E0095595D /* BlinqOperation.swift */; };
+		93838D73291E2E840095595D /* BlinqRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93838D72291E2E840095595D /* BlinqRouter.swift */; };
+		93838D75291E2EA40095595D /* BlinqRequestParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93838D74291E2EA40095595D /* BlinqRequestParameter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +37,11 @@
 		9342EFFB2916AFCB00E1C586 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9342EFFD2916AFCB00E1C586 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9342F0032916B01600E1C586 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		93838D6C291E2DCE0095595D /* BlinqPayFirestoreCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlinqPayFirestoreCollection.swift; sourceTree = "<group>"; };
+		93838D6E291E2E000095595D /* BlinqpayRequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlinqpayRequestType.swift; sourceTree = "<group>"; };
+		93838D70291E2E4E0095595D /* BlinqOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlinqOperation.swift; sourceTree = "<group>"; };
+		93838D72291E2E840095595D /* BlinqRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlinqRouter.swift; sourceTree = "<group>"; };
+		93838D74291E2EA40095595D /* BlinqRequestParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlinqRequestParameter.swift; sourceTree = "<group>"; };
 		976B6D7C45EC4DF52CDC5FD8 /* Pods_blinqpost.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_blinqpost.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -64,7 +74,6 @@
 				8A6CE9811D831DC0FFC1E3C0 /* Pods-blinqpost.debug.xcconfig */,
 				2660FA718ADA2F07CCA27071 /* Pods-blinqpost.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -89,6 +98,7 @@
 		9342EFEE2916AFC900E1C586 /* blinqpost */ = {
 			isa = PBXGroup;
 			children = (
+				93838D6B291E2D040095595D /* NetworkManager */,
 				9342EFEF2916AFC900E1C586 /* AppDelegate.swift */,
 				9342EFF12916AFC900E1C586 /* SceneDelegate.swift */,
 				9342EFF32916AFC900E1C586 /* ViewController.swift */,
@@ -99,6 +109,18 @@
 				9342EFFD2916AFCB00E1C586 /* Info.plist */,
 			);
 			path = blinqpost;
+			sourceTree = "<group>";
+		};
+		93838D6B291E2D040095595D /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				93838D6C291E2DCE0095595D /* BlinqPayFirestoreCollection.swift */,
+				93838D6E291E2E000095595D /* BlinqpayRequestType.swift */,
+				93838D70291E2E4E0095595D /* BlinqOperation.swift */,
+				93838D72291E2E840095595D /* BlinqRouter.swift */,
+				93838D74291E2EA40095595D /* BlinqRequestParameter.swift */,
+			);
+			path = NetworkManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,7 +175,7 @@
 			);
 			mainGroup = 9342EFE32916AFC900E1C586;
 			packageReferences = (
-				9322C400291DFFA700C90214 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */,
+				9322C400291DFFA700C90214 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 9342EFED2916AFC900E1C586 /* Products */;
 			projectDirPath = "";
@@ -225,8 +247,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93838D73291E2E840095595D /* BlinqRouter.swift in Sources */,
+				93838D71291E2E4E0095595D /* BlinqOperation.swift in Sources */,
 				9342EFF42916AFC900E1C586 /* ViewController.swift in Sources */,
+				93838D6D291E2DCE0095595D /* BlinqPayFirestoreCollection.swift in Sources */,
 				9342EFF02916AFC900E1C586 /* AppDelegate.swift in Sources */,
+				93838D6F291E2E000095595D /* BlinqpayRequestType.swift in Sources */,
+				93838D75291E2EA40095595D /* BlinqRequestParameter.swift in Sources */,
 				9342EFF22916AFC900E1C586 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -449,7 +476,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		9322C400291DFFA700C90214 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */ = {
+		9322C400291DFFA700C90214 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
@@ -462,17 +489,17 @@
 /* Begin XCSwiftPackageProductDependency section */
 		9322C401291DFFA700C90214 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 9322C400291DFFA700C90214 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */;
+			package = 9322C400291DFFA700C90214 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAnalyticsWithoutAdIdSupport;
 		};
 		9322C403291DFFA700C90214 /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 9322C400291DFFA700C90214 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */;
+			package = 9322C400291DFFA700C90214 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
 		};
 		9322C405291DFFA700C90214 /* FirebaseFirestoreSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 9322C400291DFFA700C90214 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */;
+			package = 9322C400291DFFA700C90214 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestoreSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
